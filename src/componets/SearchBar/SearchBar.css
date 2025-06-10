@@ -1,0 +1,51 @@
+.SearchBar {
+  width: 100%;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.SearchBar-sort-options ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.SearchBar-sort-options li {
+  margin: 0 1rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.SearchBar-sort-options .active {
+  color: #e47911;
+  border-bottom: 2px solid #e47911;
+}
+
+.SearchBar-fields {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.SearchBar-fields input {
+  padding: 0.5rem;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.SearchBar-submit button {
+  padding: 0.5rem 1rem;
+  background-color: #e47911;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.SearchBar-submit button:hover {
+  background-color: #cf6f0b;
+}
