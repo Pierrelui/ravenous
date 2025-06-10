@@ -1,0 +1,36 @@
+.Business {
+  width: 300px;
+  margin: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+
+.Business-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.Business-name {
+  font-size: 1.25rem;
+  margin: 0.75rem;
+}
+
+.Business-info {
+  padding: 0 0.75rem 0.75rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.Business-address {
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+.Business-category,
+.Business-rating {
+  margin: 0.25rem 0;
+}
