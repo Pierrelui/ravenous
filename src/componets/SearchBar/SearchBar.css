@@ -1,7 +1,6 @@
 .SearchBar {
-  width: 100%;
-  margin: 2rem 0;
   text-align: center;
+  margin: 2rem 0;
 }
 
 .SearchBar-sort-options ul {
@@ -15,7 +14,13 @@
 .SearchBar-sort-options li {
   margin: 0 1rem;
   cursor: pointer;
-  font-weight: 500;
+  padding-bottom: 0.25rem;
+  transition: color 0.2s, border-bottom 0.2s;
+}
+
+.SearchBar-sort-options li.active {
+  color: #e47911;              /* highlight color */
+  border-bottom: 2px solid #e47911;
 }
 
 .SearchBar-sort-options .active {
