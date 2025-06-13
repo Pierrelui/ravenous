@@ -1,23 +1,34 @@
 import React, { useState } from 'react';
 import './SearchBar.css';
-import { sortByOptions } from './SortOptions';
 
-function SearchBar() {
+// Mapping of display labels → Yelp API `sort_by` values
+const sortByOptions = {
+  'Best Match': 'best_match',
+  'Highest Rated': 'rating',
+  'Most Reviewed': 'review_count'
+};
+
+function SearchBar({ onSearch }) {
+  // ① track which sortBy is active
   const [term, setTerm] = useState('');
   const [location, setLocation] = useState('');
   const [sortBy, setSortBy] = useState('best_match');
 
+  // ② Handlers for typing in the inputs
+  const handleTermChange = (e) => {
+    setTerm(e.target.value);
+  };
+  const handleLocationChange = (e) => {
+    setLocation(e.target.value);
+  };
+  // ③ Handler for clicking sort options
   const handleSortByChange = (value) => {
     setSortBy(value);
   };
 
-  const handleSearch = () => {
-    // 未來會呼叫 Yelp API，傳入 { term, location, sort_by: sortBy }
-    console.log('Searching Yelp with:', { term, location, sort_by: sortBy });
-  };
-
-  const renderSortByOptions = () => {
-    return Object.entries(sortByOptions).map(([label, value]) => (
+  // ④ Render the sort options with active styling
+  const renderSortByOptions = () =>
+    Object.entries(sortByOptions).map(([label, value]) => (
       <li
         key={value}
         className={sortBy === value ? 'active' : ''}
@@ -26,29 +37,34 @@ function SearchBar() {
         {label}
       </li>
     ));
+
+  // ⑤ When the button is clicked, lift state up
+  const handleSearch = () => {
+    onSearch(term, location, sortBy);
+    console.log(`Searching Yelp with ${term}, ${location}, ${sortBy}`);
   };
 
   return (
     <div className="SearchBar">
       <div className="SearchBar-sort-options">
-        <ul>
-          {renderSortByOptions()}
-        </ul>
+        <ul>{renderSortByOptions()}</ul>
       </div>
       <div className="SearchBar-fields">
+        {/* term input */}
         <input
           placeholder="Search Businesses"
           value={term}
-          onChange={e => setTerm(e.target.value)}
+          onChange={handleTermChange}
         />
+        {/* location input */}
         <input
           placeholder="Where?"
           value={location}
-          onChange={e => setLocation(e.target.value)}
+          onChange={handleLocationChange}
         />
       </div>
       <div className="SearchBar-submit">
-        <button onClick={handleSearch}>Let's Go</button>
+        <button onClick={handleSearch}>Let’s Go</button>
       </div>
     </div>
   );
