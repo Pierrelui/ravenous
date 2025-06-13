@@ -2,12 +2,11 @@
 import React from 'react';
 import Business from '../Business/Business';
 import './BusinessList.css';
-import businessData from '../../mockData';
 
-function BusinessList() {
+function BusinessList({businesses}) {
   return (
     <div className="BusinessList">
-      {businessData.map(biz => (
+      {businesses.map(biz => (
         <Business key={biz.id} business={biz} />
       ))}
     </div>
